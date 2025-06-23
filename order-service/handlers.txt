@@ -1,0 +1,15 @@
+// Order service APIs
+
+/order/
+  - /get: get order history for a user.
+  - /create: creates a new order with the chosen items
+  - /get/id: fetch the order details for new order ID. Things like item details, pricing, delivery details
+  - /update/id: order status update
+  - /delete/id: cancels order if allowed
+  - /delivery: calculates delivery detail. Time taken, delivery partner
+
+/order/id/process-payment: Initiates payment processing through Payment Service and updates order based on payment result.
+/order/id/process-payment/refund: If order is cancelled or returned
+/order/id/confirm: Confirms order after successful payment
+/order/id/summary: Final summary after payment with all the details about the order along with delivery status and details
+/order/id/return-exchange: processes the return or exchange of a product. interacts with catalog service, inventory services

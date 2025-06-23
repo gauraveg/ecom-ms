@@ -1,0 +1,8 @@
+//Inventory service endpoints
+
+/inventory
+  - /create
+  - /get
+  - /update/id
+  - /delete/id
+  - /get/id
