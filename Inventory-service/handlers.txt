@@ -1,8 +1,9 @@
 //Inventory service endpoints
 
 /inventory
-  - /create
-  - /get
-  - /update/id
-  - /delete/id
-  - /get/id
+  POST - /: New inventory record is created for a new item.
+  GET - /: Fetches the inventory details like quantity, warehouse location etc. It will be based on filtering like category, date added etc
+  PUT - /id: Consumes messages from kafka to update the inventory after the payment is successful for an order.
+  DELETE - /id: Deletes the record if the item is removed
+  GET - /id: Fetches the inventory details for an item like category, quantity, warehouse location etc.
+  CRON - to check the inventory stocks and send alerts through notification service to users and warehouses

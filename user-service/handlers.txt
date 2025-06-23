@@ -1,31 +1,33 @@
 //User service APIs
 
-/register: registers and creates a new user.
-/login
-/logout
+POST - /register: registers and creates a new user.
+POST - /login
+POST - /logout
 
 /user/
-  - /update/id: updates user's profile
-  - /delete/id: deletes user's profile
-  - get/id: fetches user's profile, addresses, wishlist, payment methods
-  - update-password/id: updates users's password
+  PUT - /id: updates user's profile
+  DELETE - /id: deletes user's profile
+  GET - /id: fetches user's profile, addresses, wishlist, payment methods
+  PUT - /id: updates users's profile details
+
+POST - /user/password-reset/: to reset the user password
 
 /user/id/address/
-  - /create: adds new address
-  - /get: fetches all the addresses
-  - /get/id: fetches address by id
-  - /update/id: updates address by id
-  - /delete/id: deletes address by id
+  POST - /: adds new address
+  GET - /: fetches all the addresses
+  GET - /id: fetches address by id
+  PUT - /id: updates address by id
+  DELETE - /id: deletes address by id
 
 /user/id/payment/
-  - /add-payment-method: add a new payment method. Will have to interact with payment service via HTTP. Forwards to /payment/verify in payment service. After receiving response, the user service saves the savable details.
-  - /get: fetch all payment methods
-  - /update/id - only updates names and set-default
+  POST - /: add a new payment method. Will have to interact with payment service via HTTP. Forwards to /payment/verify in payment service. After receiving response, the user service saves the savable details.
+  GET - /: fetch all payment methods
+  PUT - /id - only updates names and set-default
 
 /user/id/wishlist/
-  - /create: create a new item in wishlist
-  - /get: fetches all items in wishlist
-  - /delete/id: delete item
-  - /delete: clear entire wishlist
+  POST - /: create a new item in wishlist
+  GET - /get: fetches all items in wishlist
+  DELETE - /id: delete item
+  DELETE - /: clear entire wishlist
 
-/user/id/recommendations: recommends products based on user's activity. it interacts with Catalog service (trending), Order service (purchase history). list can be cached.
+GET - /user/id/recommendations: recommends products based on user's activity. it interacts with Catalog service (trending), Order service (purchase history). list can be cached.

@@ -1,33 +1,33 @@
 //Catalog service endpoints
 
 /catalog/category/:
-  - /create: add a new category
-  - /get: get all category
-  - /get/id/products: get all the products under a category
-  - /update/id: updates category info
-  - /delete/id: delete a category
+  POST - /: add a new category
+  GET - /: get all category
+  GET - /id/products: get all the products under a category
+  PUT - /id: updates category info
+  DELETE - /id: delete a category
 
 /catalog/category/id/
-  - /create: add a new product under a category
-  - /get: fetches all the products based on filters and pagination
-  - /update/id: updates data for a single product
-  - /delete/id: deletes a product listing
-  - /get/id: fetches a single product details including images
+  POST - /: add a new product under a category
+  GET - /: fetches all the products based on filters and pagination
+  PUT - /id: updates data for a single product
+  DELETE - /id: deletes a product listing
+  GET - /id: fetches a single product details including images
 
-/catalog/search/: search based on multiple filters. (selecting tags on UI)
-/catalog/advanced-search: use a search engine like elasticsearch
-/catalog/trending: responds list of all the products that are trending. it can be based on clicks, date, occasion etc.
+GET - /catalog/search/: search based on multiple filters. (selecting tags on UI)
+GET - /catalog/advanced-search: use a search engine like elasticsearch
+GET - /catalog/trending: responds list of all the products that are trending. it can be based on clicks, date, occasion etc.
 
 /catalog/category/id/product/id/review:
-  - /get: fetches reviews of the product
-  - /create:
-  - /update:
-  - /delete
-/catalog/category/id/product/id/rating: fetches ratings of the product
-  - /get
-  - /create
-  - /update
-  - /delete
+  GET - /: fetches reviews of the product
+  POST - /: create review
+  PUT - /: update review
+  DELETE - /: delete review
 
-/catalog/category/id/product/id/check-availability: interacts with inventory service.
-/catalog/category/id/product/id/availability: interacts with inventory service.
+/catalog/category/id/product/id/rating: fetches ratings of the product
+  GET - /: get ratings
+  POST - /: create rating
+  PUT - /: update range
+  DELETE - /: delete rating
+
+GET - /catalog/category/id/product/id/check-availability: interacts with inventory service to get availability

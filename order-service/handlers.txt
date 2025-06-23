@@ -1,15 +1,23 @@
 // Order service APIs
 
 /order/
-  - /get: get order history for a user.
-  - /create: creates a new order with the chosen items
-  - /get/id: fetch the order details for new order ID. Things like item details, pricing, delivery details
-  - /update/id: order status update
-  - /delete/id: cancels order if allowed
-  - /delivery: calculates delivery detail. Time taken, delivery partner
+  GET - /: get order history for a user.
+  POST - /: creates a new order with the chosen items
+  GET - /id: fetch the order details for new order ID. Things like item details, pricing, delivery details
+  PUT - /id: order status update
+  DELETE - /id: cancels order if allowed
+  GET - /delivery: calculates delivery detail. Time taken, delivery partner
 
-/order/id/process-payment: Initiates payment processing through Payment Service and updates order based on payment result.
-/order/id/process-payment/refund: If order is cancelled or returned
-/order/id/confirm: Confirms order after successful payment
-/order/id/summary: Final summary after payment with all the details about the order along with delivery status and details
-/order/id/return-exchange: processes the return or exchange of a product. interacts with catalog service, inventory services
+POST - /order/id/process-payment: Initiates payment processing through Payment Service and updates order based on payment result.
+  - calls /payments/POST
+  - If success, produces message to inventory topic to update the inventory of an item
+  - confirms payment process status
+
+PUT - /order/id/process-payment/refund-status: If order is cancelled or returned
+  - calls /payments/Id/refund
+  - If success, produces message to inventory topic to update the inventory of an item
+  - confirms status
+
+GET - /order/id/summary: Final summary after payment with all the details about the order along with delivery status and details
+POST - /order/id/return-exchange: processes the return or exchange of a product. interacts with catalog service, inventory services
+CRON - /order/id/delivery-tracking: Checks delivery statuses at specified intervals

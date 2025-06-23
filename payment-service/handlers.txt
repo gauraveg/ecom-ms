@@ -1,0 +1,8 @@
+// Payment service APIs
+
+/payments
+  POST - /: Initiates a new payment transaction. It will accept payment details, amount and order reference. After validating the order details and calling the webhook to process the payment, it will return payment ID and initial status.
+  POST - /webhook/gateway - Receives payment status updates from external payment gateways (Stripe, PayPal, etc.)
+  GET - /: Lists payments with filters
+  GET - /Id: Retrieves payment status and transaction details
+  POST - /Id/refund: Initiates refund process for the paymentID

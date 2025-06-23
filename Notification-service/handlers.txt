@@ -1,0 +1,17 @@
+//notification servcie APIs
+
+/notifications/
+  POST /notifications/order-events: Receives order-related events from Order Service like order placed, shipped, delivered, cancelled
+    - calls /send to send notification
+  POST /notifications/payment-events: Receives payment events from Payment Service like payment successful, failed, refund processed
+    - calls /send to send notification
+  POST /notifications/user-events: Receives user events from User Service like account created, password reset, profile updated
+    - calls /send to send notification
+  POST /notifications/inventory-events: Receives inventory alerts from Inventory Service like low stock, out of stock, restock
+    - calls /send to send notification
+
+  POST - /send: Consumes message from kafka and sends notifications via specified medium (email, SMS, push). Accepts recipient details, message content
+  GET  - /: Lists notifications with filtering options like recipient, status, medium, date range
+  GET - /Id: Retrieves notification details including timestamps, and recipient information.
+  POST - /Id/delivery-status: Consumes detailed delivery status including attempts, failures, and success confirmations and sends notifications
+    - calls /send to send notification
